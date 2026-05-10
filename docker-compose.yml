@@ -1,0 +1,57 @@
+name: citana
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: citana-backend
+    working_dir: /app
+    volumes:
+      - ./backend:/app
+      # Isolate the container's .venv from the host so the host can run
+      # `uv run` independently without permission collisions on the
+      # bind-mounted directory.
+      - backend_venv:/app/.venv
+    environment:
+      DATABASE_URL: postgresql://citana_user:citana_password@postgres:5432/citana_db
+      PYTHONPATH: /app
+    ports:
+      - "8001:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: citana-postgres
+    environment:
+      POSTGRES_DB: citana_db
+      POSTGRES_USER: citana_user
+      POSTGRES_PASSWORD: citana_password
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U citana_user -d citana_db"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  docs:
+    image: squidfunk/mkdocs-material:latest
+    container_name: citana-docs
+    volumes:
+      - ./docs:/docs/docs
+      - ./mkdocs.yml:/docs/mkdocs.yml
+    ports:
+      - "2012:2011"
+    command: serve --dev-addr=0.0.0.0:2011
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  backend_venv:

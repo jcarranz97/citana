@@ -1,0 +1,15 @@
+# Development seed data — placeholder
+#
+# This file will be expanded as domains are added (services, resources,
+# customers, appointments). For now the admin user is created
+# automatically on first startup from these env vars:
+#
+#   DEFAULT_ADMIN_USERNAME (default: admin)
+#   DEFAULT_ADMIN_PASSWORD (default: citana-admin)
+#
+# Override them in your environment or .env file before running
+# `docker compose up` for the first time.
+
+admin:
+  username: admin
+  password: citana-admin

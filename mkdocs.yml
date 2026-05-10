@@ -1,0 +1,75 @@
+site_name: Citana Documentation
+site_description: Self-hostable booking chatbot — FastAPI + MCP
+
+repo_name: jcarranz97/citana
+repo_url: https://github.com/jcarranz97/citana
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - search.share
+    - toc.integrate
+    - content.code.copy
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+nav:
+  - Home: index.md
+  - Roadmap: roadmap.md
+  - Requirements: requirements.md
+  - Use Cases: use-cases.md
+  - Ideas:
+    - Overview: ideas/overview.md
+    - Architecture: ideas/architecture.md
+    - MCP Design: ideas/mcp-design.md
+    - Chat Client Options: ideas/chat-client-options.md
+    - WhatsApp Integration: ideas/whatsapp-integration.md
+    - Tech Stack: ideas/tech-stack.md
+  - Architecture:
+    - Backend: architecture/backend.md
+    - MCP Server: architecture/mcp.md
+    - Database: architecture/database-schema.md
+    - API: architecture/api-specification.md
+    - Deployment: architecture/deployment.md
+  - Development:
+    - Overview: development/index.md
+    - Local Setup: development/setup.md
+    - Code Quality: development/code-quality.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - footnotes
+  - attr_list
+  - md_in_html
+  - tables
+
+plugins:
+  - search
+
+extra_javascript:
+  - https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js

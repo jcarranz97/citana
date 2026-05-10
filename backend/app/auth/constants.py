@@ -1,0 +1,29 @@
+from enum import StrEnum
+
+
+class UserRole(StrEnum):
+    """User roles for authorization."""
+
+    ADMIN = "admin"
+    USER = "user"
+
+
+class ErrorCode:
+    """Authentication error codes."""
+
+    USER_NOT_FOUND = "USER_NOT_FOUND"
+    USER_ALREADY_EXISTS = "USER_ALREADY_EXISTS"
+    INVALID_CREDENTIALS = "INVALID_CREDENTIALS"
+    INACTIVE_USER = "INACTIVE_USER"
+    INVALID_TOKEN = "INVALID_TOKEN"
+    TOKEN_EXPIRED = "TOKEN_EXPIRED"
+    INCORRECT_PASSWORD = "INCORRECT_PASSWORD"
+    PASSWORD_TOO_WEAK = "PASSWORD_TOO_WEAK"
+    INSUFFICIENT_PERMISSIONS = "INSUFFICIENT_PERMISSIONS"
+
+
+JWT_TOKEN_PREFIX = "Bearer"
+JWT_SUBJECT = "access"
+
+MIN_PASSWORD_LENGTH = 8
+MAX_PASSWORD_LENGTH = 128
