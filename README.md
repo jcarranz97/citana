@@ -59,9 +59,29 @@ docker compose up --build
 
 ## Documentation
 
-Browse the full docs at <http://localhost:2012> after `docker compose up`,
-or read them under `docs/`. Start with `docs/ideas/overview.md`.
+For detailed information, visit the official documentation at
+<https://jcarranz97.github.io/citana/>, or run a local copy with:
+
+```bash
+docker compose up docs   # served at http://localhost:2012
+# or, outside Docker:
+mkdocs serve
+```
+
+The source lives under `docs/`. Start with `docs/ideas/overview.md`.
+
+## Contributing
+
+This is a personal project. See the
+[development guide](https://jcarranz97.github.io/citana/development/)
+for setup, conventions, and the validation checklist.
 
 ## License
 
 MIT License — see the [LICENSE](LICENSE) file for details.
+
+---
+
+**[View Full Documentation](https://jcarranz97.github.io/citana/)** |
+**[Development Guide](https://jcarranz97.github.io/citana/development/)** |
+**[Issues](https://github.com/jcarranz97/citana/issues)**
